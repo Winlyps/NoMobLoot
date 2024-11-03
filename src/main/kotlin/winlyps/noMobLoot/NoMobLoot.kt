@@ -14,6 +14,9 @@ class NoMobLoot : JavaPlugin() {
 
     override fun onDisable() {
         // Plugin shutdown logic
-        logger.info("NoMobLoot plugin has been disabled.")
+        server.worlds.forEach { world ->
+            world.setGameRuleValue("doMobLoot", "true")
+            logger.info("NoMobLoot plugin has been disabled.")
+        }
     }
 }
